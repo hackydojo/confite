@@ -1,5 +1,5 @@
-# confite
-A simple and tiny class to easily manage configurations
+# ![](https://i.ibb.co/JKWYP5X/Group-1.png)
+### Easly manage configurations with tiny library
 
 ## Installing confite
 
