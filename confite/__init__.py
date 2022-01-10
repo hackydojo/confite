@@ -66,7 +66,7 @@ class Confite(object):
             else:
                 config_property = self.config_map[property_key]
 
-            # Multiline Generator
+            # Multiline Handler
             lines_list: list[str] = config_property.split(break_line_character)
             if len(lines_list) > 0:
                 for index in range(len(lines_list) - 1):
