@@ -1,5 +1,6 @@
 import os
 import base64
+from utils import multiline_handler
 
 
 class Confite(object):
@@ -65,14 +66,7 @@ class Confite(object):
                 config_property = self.as_base64_decoded_str(property_key)
             else:
                 config_property = self.config_map[property_key]
-
-            # Multiline Handler
-            lines_list: list[str] = config_property.split(break_line_character)
-            if len(lines_list) > 0:
-                for index in range(len(lines_list) - 1):
-                    lines_list[index] += '\n'
-                config_property = lines_list
-
+            config_property = multiline_handler(config_property, break_line_character)
             property_file.write(config_property)
         return file_name
 
