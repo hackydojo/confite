@@ -1,5 +1,6 @@
 import os
 import base64
+from formatter import multiline_handler
 
 
 class Confite(object):
@@ -59,12 +60,13 @@ class Confite(object):
     # -----------------------------------------------------
     # AS FILE
     # -----------------------------------------------------
-    def as_file(self, file_name: str, property_key: str, base64_decode=False):
+    def as_file(self, file_name: str, property_key: str, base64_decode=False, break_line_character='\\n'):
         with open(file_name, mode='w', encoding='utf-8') as property_file:
             if base64_decode:
                 config_property = self.as_base64_decoded_str(property_key)
             else:
                 config_property = self.config_map[property_key]
+            config_property = multiline_handler(config_property, break_line_character)
             property_file.write(config_property)
         return file_name
 
