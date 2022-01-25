@@ -1,6 +1,6 @@
 import os
 import base64
-from utils import multiline_handler
+from formatter import multiline_handler
 
 
 class Confite(object):
