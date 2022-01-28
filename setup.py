@@ -5,7 +5,7 @@ from setuptools.command.install import install
 
 
 # confite version
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 
 def readme():
@@ -30,7 +30,7 @@ class VerifyVersionCommand(install):
 
 setup(
     name='confite',
-    version='0.1.0',
+    version='1.0.1',
     description='A simple and tiny class to easily manage configurations',
     author='HackyDojo',
     author_email='info@subvertic.com',
