@@ -1,0 +1,35 @@
+dist: xenial
+
+branches:
+  only:
+    - main
+
+language: python
+python:
+  - "3.10"
+  - "3.9"
+
+install:
+  - pip3 install flake8
+  - pip install pytest pytest-cov
+
+script:
+  - flake8 src/app  --ignore F401,F403
+  - flake8 src/tests --ignore E501
+  - echo ok
+  - bash run_tests.sh
+  - python setup.py check
+  - pip install wheel
+
+before_deploy:
+   - python setup.py sdist
+   - python setup.py bdist_wheel --universal
+
+deploy:
+  provider: pypi
+  username: "__token__"
+  password:
+    secure: $PYPI_TOKEN
+  on:
+    branch: main
+    condition: $TRAVIS_PYTHON_VERSION == 3.10
