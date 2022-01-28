@@ -4,7 +4,7 @@ from setuptools import setup
 from setuptools.command.install import install
 
 
-# circleci.py version
+# confite version
 VERSION = "1.0.0"
 
 
@@ -44,5 +44,6 @@ setup(
             'Operating System :: POSIX :: Linux',
             'Programming Language :: Python :: 3.4',
             'Programming Language :: Python :: 3.5',
-        ]
+        ],
+    cmdclass={'verify': VerifyVersionCommand}
 )
