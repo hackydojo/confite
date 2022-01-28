@@ -1,4 +1,32 @@
+import sys
+import os
 from setuptools import setup
+from setuptools.command.install import install
+
+
+# circleci.py version
+VERSION = "1.1.1"
+
+
+def readme():
+    """print long description"""
+    with open('README.md') as f:
+        return f.read()
+
+
+class VerifyVersionCommand(install):
+    """Custom command to verify that the git tag matches our version"""
+    description = 'verify that the git tag matches our version'
+
+    def run(self):
+        tag = os.getenv('CIRCLE_TAG')
+
+        if tag != VERSION:
+            info = "Git tag: {0} does not match the version of this app: {1}".format(
+                tag, VERSION
+            )
+            sys.exit(info)
+
 
 setup(
     name='confite',
