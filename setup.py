@@ -5,7 +5,7 @@ from setuptools.command.install import install
 
 
 # confite version
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 
 
 def readme():
@@ -35,7 +35,11 @@ setup(
     author='HackyDojo',
     author_email='info@subvertic.com',
     packages=[
-        'confite'
+        'confite',
+        'confite.security'
+    ],
+    install_requires=[
+        'pycryptodome'
     ],
     classifiers=[
             'Development Status :: 1 - Planning',
