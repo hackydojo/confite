@@ -3,7 +3,7 @@ import base64
 from .output_formatter import format_multiline_string
 
 
-class Confite(object):
+class Confite:
 
     # -----------------------------------------------------
     # CLASS CONSTRUCTOR
