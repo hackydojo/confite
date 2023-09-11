@@ -15,6 +15,10 @@ dev:
 	pip install pytest pytest-cov flake8
 	pip install -e .
 
+format:
+	black --line-length 75 .
+	flake8
+
 package:
 	python setup.py sdist
 	python setup.py bdist_wheel
