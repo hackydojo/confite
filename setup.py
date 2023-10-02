@@ -5,7 +5,7 @@ from setuptools.command.install import install
 
 
 # confite version
-VERSION = "1.0.4"
+VERSION = "1.0.5"
 
 
 def readme():
