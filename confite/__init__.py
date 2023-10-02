@@ -28,12 +28,15 @@ class Confite(object):
     def __load_config(self, env_variable_names: list):
         for variable in env_variable_names:
             try:
-                self.config_map[variable] = self.load_env_variable(variable)
+                self.config_map[variable] = self.load_env_variable(
+                    variable
+                )
             except ValueError as ve:
                 self.__errors.append(str(ve))
         if len(self.__errors) > 0:
             raise EnvironmentError(
-                f"Multiple environment setup " f"errors: \n {self.__format_errors()}"
+                f"Multiple environment setup "
+                f"errors: \n {self.__format_errors()}"
             )
 
     # -----------------------------------------------------
@@ -112,6 +115,7 @@ class Confite(object):
         value = os.environ.get(variable_name)
         if value is None or value == "":
             raise ValueError(
-                f"Unable to find a valid " f"value for variable {variable_name}"
+                f"Unable to find a valid "
+                f"value for variable {variable_name}"
             )
         return value

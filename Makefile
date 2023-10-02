@@ -17,7 +17,6 @@ dev:
 
 format:
 	black --line-length 75 .
-	flake8
 
 package:
 	python setup.py sdist
