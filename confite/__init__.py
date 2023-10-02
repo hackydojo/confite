@@ -1,5 +1,6 @@
 import os
 import base64
+import json
 from .output_formatter import format_multiline_string
 
 
@@ -49,8 +50,26 @@ class Confite(object):
     # -----------------------------------------------------
     # AS STRING
     # -----------------------------------------------------
-    def as_str(self, key) -> str:
+    def as_str(self, key: str) -> str:
         return self.config_map[key]
+
+    def as_list_of_int(self, key: str) -> list[int]:
+        values: list = []
+        env_list_value = json.loads(self.config_map.get(key))
+        if isinstance(env_list_value, list):
+            for item in env_list_value:
+                values.append(int(item))
+            return values
+        raise ValueError(f"The value of { key } is not a valid list")
+
+    def as_list_of_str(self, key: str) -> list[str]:
+        values: list = []
+        env_list_value = json.loads(self.config_map.get(key))
+        if isinstance(env_list_value, list):
+            for item in env_list_value:
+                values.append(str(item))
+            return values
+        raise ValueError(f"The value of { key } is not a valid list")
 
     # -----------------------------------------------------
     # AS INT
